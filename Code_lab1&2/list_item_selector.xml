@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- When the item is pressed, change the background to orange -->
+    <item android:state_pressed="true" android:drawable="@android:color/holo_orange_light" />
+    <!-- Default state -->
+    <item android:drawable="@android:color/white" />
+</selector>
