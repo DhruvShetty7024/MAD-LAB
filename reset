@@ -26,3 +26,64 @@ resetButton.setOnClickListener(v -> {
     Toast.makeText(MainActivity.this, "All fields have been reset", Toast.LENGTH_SHORT).show();
 });
 
+Send text
+
+EditText nameInput = findViewById(R.id.nameInput);
+
+// Get the text entered in the EditText as a String
+String name = nameInput.getText().toString();
+
+// Example: Show the text in a Toast
+Toast.makeText(MainActivity.this, "Name entered: " + name, Toast.LENGTH_SHORT).show();
+
+// Inside the button click listener or wherever you want to trigger the transfer
+EditText nameInput = findViewById(R.id.nameInput);
+
+// Get the text entered in the EditText
+String name = nameInput.getText().toString();
+
+// Create an Intent to move to the second activity
+Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+
+// Put the text into the Intent
+intent.putExtra("user_name", name);
+
+// Start the second activity
+startActivity(intent);
+
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_second);
+
+    // Retrieve the Intent and get the data
+    Intent intent = getIntent();
+    String name = intent.getStringExtra("user_name");
+
+    // Example: Display the data in a TextView
+    TextView displayName = findViewById(R.id.displayName);
+    displayName.setText("Welcome, " + name);
+}
+ticketTypeToggle.setOnCheckedChangeListener((buttonView, isChecked) -> {
+    if (isChecked) { 
+        // If "Premium" is selected
+        Calendar calendar = Calendar.getInstance();
+        int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+
+        if (currentHour >= 12) {
+            // Enable "Submit" button only after 12:00 PM
+            bookNowButton.setEnabled(true);
+        } else {
+            // Disable "Submit" button if it's before 12:00 PM
+            bookNowButton.setEnabled(false);
+            Toast.makeText(MainActivity.this, "Premium tickets can only be booked after 12:00 PM", Toast.LENGTH_SHORT).show();
+        }
+    } else {
+        // If "Standard" is selected, enable "Submit" button
+        bookNowButton.setEnabled(true);
+    }
+});
+
+
+
