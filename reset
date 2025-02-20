@@ -1,0 +1,28 @@
+Reset button-
+resetButton.setOnClickListener(v -> {
+    // Reset the movie spinner to the first option
+    movieSpinner.setSelection(0);
+
+    // Reset the theatre spinner to the first option
+    theatreSpinner.setSelection(0);
+
+    // Reset the date picker to the current system date
+    Calendar calendar = Calendar.getInstance();
+    datePicker.updateDate(calendar.get(Calendar.YEAR), 
+                          calendar.get(Calendar.MONTH), 
+                          calendar.get(Calendar.DAY_OF_MONTH));
+
+    // Reset the time picker to 12:00 AM (default time)
+    timePicker.setHour(0);
+    timePicker.setMinute(0);
+
+    // Reset the toggle button to the "Standard Ticket" option
+    ticketTypeToggle.setChecked(false);
+
+    // Disable the "Book Now" button again
+    bookNowButton.setEnabled(false);
+
+    // Show a toast message to indicate fields are reset
+    Toast.makeText(MainActivity.this, "All fields have been reset", Toast.LENGTH_SHORT).show();
+});
+
